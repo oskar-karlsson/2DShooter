@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmuq44pupua6x"]
+
+[ext_resource type="Script" path="res://Scripts/player.cs" id="1_lksym"]
+[ext_resource type="Texture2D" uid="uid://d14bqylprjkni" path="res://Sprites/Top Down Shooter.png" id="2_t5uay"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esrt2"]
+radius = 32.0
+
+[node name="Player" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_lksym")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_esrt2")
+
+[node name="GFX" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("2_t5uay")
