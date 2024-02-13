@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddr2ti7s4klmv"]
+
+[ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_e11na"]
+[ext_resource type="Texture2D" uid="uid://cdeygq0m3y5f1" path="res://Sprites/Enemy.png" id="1_jwr5g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nb4uu"]
+radius = 19.0
+height = 56.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gfkkm"]
+radius = 24.0
+height = 70.0
+
+[node name="Enemy" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_e11na")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nb4uu")
+
+[node name="GFX" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_jwr5g")
+
+[node name="AttackRange" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+position = Vector2(-2, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gfkkm")
+
+[connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeBodyEnter"]
+[connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeBodyExit"]
