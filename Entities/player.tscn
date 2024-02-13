@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmuq44pupua6x"]
+[gd_scene load_steps=6 format=3 uid="uid://bmuq44pupua6x"]
 
 [ext_resource type="Script" path="res://Scripts/player.cs" id="1_lksym"]
 [ext_resource type="Texture2D" uid="uid://d14bqylprjkni" path="res://Sprites/Top Down Shooter.png" id="2_t5uay"]
 [ext_resource type="Script" path="res://Scripts/Gun.cs" id="3_5l4oe"]
+[ext_resource type="PackedScene" uid="uid://df0dgrm5hkprj" path="res://Entities/bullet.tscn" id="4_v0yrx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_esrt2"]
 radius = 32.0
@@ -22,3 +23,4 @@ texture = ExtResource("2_t5uay")
 [node name="Gun" type="Node2D" parent="."]
 position = Vector2(42, 0)
 script = ExtResource("3_5l4oe")
+bulletScene = ExtResource("4_v0yrx")
