@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddr2ti7s4klmv"]
+[gd_scene load_steps=6 format=3 uid="uid://ddr2ti7s4klmv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_e11na"]
 [ext_resource type="Texture2D" uid="uid://cdeygq0m3y5f1" path="res://Sprites/Enemy.png" id="1_jwr5g"]
+[ext_resource type="Script" path="res://Scripts/Health.cs" id="2_sjela"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nb4uu"]
 radius = 19.0
@@ -11,9 +12,13 @@ height = 56.0
 radius = 24.0
 height = 70.0
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["attacker"]]
 motion_mode = 1
 script = ExtResource("1_e11na")
+
+[node name="Health" type="Node2D" parent="."]
+script = ExtResource("2_sjela")
+maxHealth = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)

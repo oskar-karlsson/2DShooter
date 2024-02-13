@@ -7,7 +7,7 @@ public partial class Enemy : CharacterBody2D
     player playerCharacter;
 
     [Export] public float speed = 250f;
-    [Export] public float damage = 10f;
+    [Export] public float damage = 25f;
     [Export] public float attacksPerSecond = 2f;
 
     float timeBetweenAttacks; // attackSpeed
@@ -55,7 +55,7 @@ public partial class Enemy : CharacterBody2D
 
     public void Attack()
     {
-        GD.Print("Attack player");
+        playerCharacter.GetNode<Health>("Health").Damage(damage);
     }
 
     public void OnAttackRangeBodyEnter(Node2D body)
