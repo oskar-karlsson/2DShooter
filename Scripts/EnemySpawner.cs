@@ -6,7 +6,7 @@ public partial class EnemySpawner : Node2D
 	[Export] public Node2D[] spawnPoints;
 	[Export] public float enemiesPerSecond = 1f;
 
-	float timeBetweenSpawns; // spawnRate
+	float timeBetweenSpawns;
 	float timeUntilSpawns = 0;
 
 	public override void _Ready()
@@ -31,9 +31,9 @@ public partial class EnemySpawner : Node2D
 
 	private void Spawn()
 	{
-		RandomNumberGenerator rng = new RandomNumberGenerator();
-		Vector2 location = spawnPoints[rng.Randi() % spawnPoints.Length].GlobalPosition;
-		Enemy enemy = (Enemy)enemyScene.Instantiate();
+		var rng = new RandomNumberGenerator();
+		var location = spawnPoints[rng.Randi() % spawnPoints.Length].GlobalPosition;
+		var enemy = (Enemy)enemyScene.Instantiate();
 		enemy.GlobalPosition = location;
 		GetTree().Root.AddChild(enemy);
 	}

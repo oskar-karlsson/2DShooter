@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class player : CharacterBody2D
 {
@@ -8,7 +7,7 @@ public partial class player : CharacterBody2D
     public override void _PhysicsProcess(double delta){
         LookAt(GetGlobalMousePosition());
 
-        Vector2 move_input = Input.GetVector("left", "right", "up", "down");
+        var move_input = Input.GetVector(InputActions.Left, InputActions.Right, InputActions.Up, InputActions.Down);
 
         Velocity = move_input * speed;
 

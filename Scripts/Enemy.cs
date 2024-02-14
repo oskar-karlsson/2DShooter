@@ -10,15 +10,13 @@ public partial class Enemy : CharacterBody2D
     [Export] public float damage = 25f;
     [Export] public float attacksPerSecond = 2f;
 
-    float timeBetweenAttacks; // attackSpeed
+    float timeBetweenAttacks;
     float timeUntilAttack;
     bool withinAttackRange = false;
 
     public override void _Ready()
     {
         playerCharacter = (player)GetTree().Root.GetNode("MainGame").GetNode("Player");
-
-        GD.Print(playerCharacter.Name);
 
         timeBetweenAttacks = 1 / attacksPerSecond;
         timeUntilAttack = timeBetweenAttacks;
@@ -42,7 +40,7 @@ public partial class Enemy : CharacterBody2D
         if (playerCharacter != null)
         {
             LookAt(playerCharacter.GlobalPosition);
-            Vector2 direction = (playerCharacter.GlobalPosition - this.GlobalPosition).Normalized();
+            var direction = (playerCharacter.GlobalPosition - GlobalPosition).Normalized();
             Velocity = direction * speed;
         }
         else
@@ -62,7 +60,6 @@ public partial class Enemy : CharacterBody2D
     {
         if (body.IsInGroup("player"))
         {
-            GD.Print("Player in range");
             withinAttackRange = true;
         }
     }

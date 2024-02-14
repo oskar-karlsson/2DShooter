@@ -17,17 +17,17 @@ public partial class Gun : Node2D
 
     public override void _Process(double delta)
     {
-        if (Input.IsActionJustPressed("click") && timeSinceFired > timeBetweenShots)
+        if (Input.IsActionJustPressed(InputActions.Click) && timeSinceFired > timeBetweenShots)
         {
-            RigidBody2D bullet = bulletScene.Instantiate<RigidBody2D>();
+            var bullet = bulletScene.Instantiate<RigidBody2D>();
 
-            bullet.Rotation = this.GlobalRotation;
-            bullet.Position = this.GlobalPosition;
+            bullet.Rotation = GlobalRotation;
+            bullet.Position = GlobalPosition;
 
-            Vector2 bulletDirection = bullet.Transform.X;
+            var bulletDirection = bullet.Transform.X;
             bullet.LinearVelocity = bulletDirection * bulletSpeed;
 
-            this.GetTree().Root.AddChild(bullet);
+            GetTree().Root.AddChild(bullet);
 
             timeSinceFired = 0f;
         }
