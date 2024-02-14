@@ -16,7 +16,7 @@ public partial class Enemy : CharacterBody2D
 
     public override void _Ready()
     {
-        playerCharacter = (player)GetTree().Root.GetNode("MainGame").GetNode("Player");
+        playerCharacter = (player)GetTree().Root.GetNode(NodePaths.MainGame).GetNode(NodePaths.Player);
 
         timeBetweenAttacks = 1 / attacksPerSecond;
         timeUntilAttack = timeBetweenAttacks;
@@ -53,12 +53,12 @@ public partial class Enemy : CharacterBody2D
 
     public void Attack()
     {
-        playerCharacter.GetNode<Health>("Health").Damage(damage);
+        playerCharacter.GetNode<Health>(NodePaths.Health).Damage(damage);
     }
 
     public void OnAttackRangeBodyEnter(Node2D body)
     {
-        if (body.IsInGroup("player"))
+        if (body.IsInGroup(Groups.Player))
         {
             withinAttackRange = true;
         }
@@ -66,7 +66,7 @@ public partial class Enemy : CharacterBody2D
 
     public void OnAttackRangeBodyExit(Node2D body)
     {
-        if (body.IsInGroup("player"))
+        if (body.IsInGroup(Groups.Player))
         {
             withinAttackRange = false;
             timeUntilAttack = timeBetweenAttacks;
