@@ -4,7 +4,7 @@ public partial class EnemySpawner : Node2D
 {
 	[Export] public PackedScene enemyScene;
 	[Export] public Node2D[] spawnPoints;
-	[Export] public float enemiesPerSecond = 1f;
+	[Export] public float enemiesPerSecond = 0.5f;
 
 	float timeBetweenSpawns;
 	float timeUntilSpawns = 0;

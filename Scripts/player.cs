@@ -2,7 +2,7 @@ using Godot;
 
 public partial class player : CharacterBody2D
 {
-    [Export] public float speed = 300f;
+    [Export] public float speed = 150f;
 
     public override void _PhysicsProcess(double delta){
         LookAt(GetGlobalMousePosition());

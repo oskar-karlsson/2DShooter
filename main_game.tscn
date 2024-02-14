@@ -15,12 +15,13 @@ enemyScene = ExtResource("2_gg2ir")
 spawnPoints = [NodePath("SpawnPoint"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint3")]
 
 [node name="SpawnPoint" type="Node2D" parent="EnemySpawner"]
+position = Vector2(64, 64)
 
 [node name="SpawnPoint2" type="Node2D" parent="EnemySpawner"]
-position = Vector2(2560, 0)
+position = Vector2(1856, 64)
 
 [node name="SpawnPoint3" type="Node2D" parent="EnemySpawner"]
-position = Vector2(0, 1440)
+position = Vector2(64, 992)
 
 [node name="SpawnPoint4" type="Node2D" parent="EnemySpawner"]
-position = Vector2(2560, 1440)
+position = Vector2(1856, 992)

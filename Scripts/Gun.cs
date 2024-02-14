@@ -4,8 +4,7 @@ public partial class Gun : Node2D
 {
     [Export] public PackedScene bulletScene;
     [Export] public float bulletSpeed = 600f;
-    [Export] public float bulletsPerSecond = 5f;
-    [Export] public float bulletDamage = 30f;
+    [Export] public float bulletsPerSecond = 1f;
 
     float timeBetweenShots;
     float timeSinceFired = 0f;
@@ -17,7 +16,7 @@ public partial class Gun : Node2D
 
     public override void _Process(double delta)
     {
-        if (Input.IsActionJustPressed(InputActions.Click) && timeSinceFired > timeBetweenShots)
+        if (Input.IsActionPressed(InputActions.Click) && timeSinceFired > timeBetweenShots)
         {
             var bullet = bulletScene.Instantiate<RigidBody2D>();
 

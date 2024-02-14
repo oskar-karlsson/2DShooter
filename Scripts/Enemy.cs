@@ -6,7 +6,7 @@ public partial class Enemy : CharacterBody2D
 {
     player playerCharacter;
 
-    [Export] public float speed = 250f;
+    [Export] public float speed = 100f;
     [Export] public float damage = 25f;
     [Export] public float attacksPerSecond = 2f;
 
@@ -24,7 +24,7 @@ public partial class Enemy : CharacterBody2D
 
     public override void _Process(double delta)
     {
-        if (withinAttackRange && timeUntilAttack <= 0)
+        if (PlayerAlive() && withinAttackRange && timeUntilAttack <= 0)
         {
             Attack();
             ResetAttackTimer();
@@ -37,20 +37,19 @@ public partial class Enemy : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
-        if (playerCharacter != null)
-        {
-            LookAt(playerCharacter.GlobalPosition);
-
-            var playerPosition = playerCharacter.GlobalPosition;
-            var enemyPosition = GlobalPosition;
-
-            var direction = (playerPosition - enemyPosition).Normalized();
-            Velocity = direction * speed;
-        }
-        else
+        if (!PlayerAlive())
         {
             Velocity = Vector2.Zero;
+            return;
         }
+
+        LookAt(playerCharacter.GlobalPosition);
+
+        var playerPosition = playerCharacter.GlobalPosition;
+        var enemyPosition = GlobalPosition;
+
+        var direction = (playerPosition - enemyPosition).Normalized();
+        Velocity = direction * speed;
 
         MoveAndSlide();
     }
@@ -80,5 +79,15 @@ public partial class Enemy : CharacterBody2D
     private void ResetAttackTimer()
     {
         timeUntilAttack = timeBetweenAttacks;
+    }
+
+    private bool PlayerAlive()
+    {
+        if (playerCharacter != null && IsInstanceValid(playerCharacter))
+        {
+            return true;
+        }
+
+        return false;
     }
 }
