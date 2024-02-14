@@ -19,7 +19,7 @@ public partial class Enemy : CharacterBody2D
         playerCharacter = (player)GetTree().Root.GetNode(NodePaths.MainGame).GetNode(NodePaths.Player);
 
         timeBetweenAttacks = 1 / attacksPerSecond;
-        timeUntilAttack = timeBetweenAttacks;
+        ResetAttackTimer();
     }
 
     public override void _Process(double delta)
@@ -27,7 +27,7 @@ public partial class Enemy : CharacterBody2D
         if (withinAttackRange && timeUntilAttack <= 0)
         {
             Attack();
-            timeUntilAttack = timeBetweenAttacks;
+            ResetAttackTimer();
         }
         else
         {
@@ -40,7 +40,11 @@ public partial class Enemy : CharacterBody2D
         if (playerCharacter != null)
         {
             LookAt(playerCharacter.GlobalPosition);
-            var direction = (playerCharacter.GlobalPosition - GlobalPosition).Normalized();
+
+            var playerPosition = playerCharacter.GlobalPosition;
+            var enemyPosition = GlobalPosition;
+
+            var direction = (playerPosition - enemyPosition).Normalized();
             Velocity = direction * speed;
         }
         else
@@ -69,7 +73,12 @@ public partial class Enemy : CharacterBody2D
         if (body.IsInGroup(Groups.Player))
         {
             withinAttackRange = false;
-            timeUntilAttack = timeBetweenAttacks;
+            ResetAttackTimer();
         }
+    }
+
+    private void ResetAttackTimer()
+    {
+        timeUntilAttack = timeBetweenAttacks;
     }
 }
