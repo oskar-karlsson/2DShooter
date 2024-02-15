@@ -10,9 +10,11 @@ public static class InputActions
 public static class NodePaths
 {
     public const string Timer = "Timer";
-    public const string Health = "Health";
+    public const string EnemyHealth = "EnemyHealth";
+    public const string PlayerHealth = "PlayerHealth";
     public const string MainGame = "MainGame";
     public const string Player = "Player";
+    public const string KillCount = "KillCount";
 }
 
 public static class Groups

@@ -1,8 +1,8 @@
 using Godot;
 
-public partial class Health : Node2D
+public partial class EnemyHealth : Node2D
 {
-    [Export] public float maxHealth = 100f;
+    [Export] public float maxHealth = 20f;
 
     private float health;
 

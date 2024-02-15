@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bmuq44pupua6x"]
 
 [ext_resource type="Script" path="res://Scripts/player.cs" id="1_lksym"]
-[ext_resource type="Script" path="res://Scripts/Health.cs" id="2_6juyt"]
+[ext_resource type="Script" path="res://Scripts/PlayerHealth.cs" id="2_fwnha"]
 [ext_resource type="Texture2D" uid="uid://d14bqylprjkni" path="res://Sprites/Top Down Shooter.png" id="2_t5uay"]
 [ext_resource type="Script" path="res://Scripts/Gun.cs" id="3_5l4oe"]
 [ext_resource type="PackedScene" uid="uid://df0dgrm5hkprj" path="res://Entities/bullet.tscn" id="4_v0yrx"]
@@ -14,8 +14,8 @@ scale = Vector2(1.00205, 0.987174)
 motion_mode = 1
 script = ExtResource("1_lksym")
 
-[node name="Health" type="Node2D" parent="."]
-script = ExtResource("2_6juyt")
+[node name="PlayerHealth" type="Node2D" parent="."]
+script = ExtResource("2_fwnha")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_esrt2")

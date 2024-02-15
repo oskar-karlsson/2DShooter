@@ -25,3 +25,8 @@ position = Vector2(64, 992)
 
 [node name="SpawnPoint4" type="Node2D" parent="EnemySpawner"]
 position = Vector2(1856, 992)
+
+[node name="KillCount" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Kills 0"

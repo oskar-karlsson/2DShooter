@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_e11na"]
 [ext_resource type="Texture2D" uid="uid://cdeygq0m3y5f1" path="res://Sprites/Enemy.png" id="1_jwr5g"]
-[ext_resource type="Script" path="res://Scripts/Health.cs" id="2_sjela"]
+[ext_resource type="Script" path="res://Scripts/EnemyHealth.cs" id="2_7062k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nb4uu"]
 radius = 19.0
@@ -16,8 +16,8 @@ height = 70.0
 motion_mode = 1
 script = ExtResource("1_e11na")
 
-[node name="Health" type="Node2D" parent="."]
-script = ExtResource("2_sjela")
+[node name="EnemyHealth" type="Node2D" parent="."]
+script = ExtResource("2_7062k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 0)
