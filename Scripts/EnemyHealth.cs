@@ -6,6 +6,10 @@ public partial class EnemyHealth : Node2D
 
     private float health;
 
+    // Declare a signal
+    [Signal]
+    public delegate void EnemyKilledEventHandler();
+
     public override void _Ready()
     {
         health = maxHealth;
@@ -17,6 +21,7 @@ public partial class EnemyHealth : Node2D
 
         if (health <= 0)
         {
+            EmitSignal(Signals.EnemyKilled);
             GetParent().QueueFree();
         }
     }

@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using System.Diagnostics;
 
 public partial class Enemy : CharacterBody2D
 {

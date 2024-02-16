@@ -22,3 +22,8 @@ public static class Groups
     public const string Attacker = "attacker";
     public const string Player = "player";
 }
+
+public static class Signals
+{
+    public const string EnemyKilled = "EnemyKilled";
+}

@@ -8,6 +8,7 @@ public partial class EnemySpawner : Node2D
 
 	float timeBetweenSpawns;
 	float timeUntilSpawns = 0;
+	private int killCount = 0;
 
 	public override void _Ready()
 	{
@@ -35,6 +36,25 @@ public partial class EnemySpawner : Node2D
 		var location = spawnPoints[rng.Randi() % spawnPoints.Length].GlobalPosition;
 		var enemy = (Enemy)enemyScene.Instantiate();
 		enemy.GlobalPosition = location;
+
+		// Connect the EnemyKilled signal to a method to handle the kill count
+		var enemyHealth = enemy.GetNode<EnemyHealth>(NodePaths.EnemyHealth);
+
+		enemyHealth.Connect(Signals.EnemyKilled, new Callable(this, nameof(OnEnemyKilled)));
+
 		GetTree().Root.AddChild(enemy);
+	}
+
+	private void OnEnemyKilled()
+	{
+		killCount++;
+		UpdateKillCountLabel();
+	}
+
+	private void UpdateKillCountLabel()
+	{
+		var killCountLabel = (Label)GetTree().Root.GetNode(NodePaths.MainGame).GetNode(NodePaths.KillCount);
+
+		killCountLabel.Text = $"Kills: {killCount}";
 	}
 }
