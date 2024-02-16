@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/player.cs" id="1_lksym"]
 [ext_resource type="Script" path="res://Scripts/PlayerHealth.cs" id="2_fwnha"]
-[ext_resource type="Texture2D" uid="uid://d14bqylprjkni" path="res://Sprites/Top Down Shooter.png" id="2_t5uay"]
+[ext_resource type="Texture2D" uid="uid://d14bqylprjkni" path="res://Sprites/Ship.png" id="2_t5uay"]
 [ext_resource type="Script" path="res://Scripts/Gun.cs" id="3_5l4oe"]
 [ext_resource type="PackedScene" uid="uid://df0dgrm5hkprj" path="res://Entities/bullet.tscn" id="4_v0yrx"]
 

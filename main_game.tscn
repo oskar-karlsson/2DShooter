@@ -1,32 +1,40 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxkgcl6yyt8tc"]
+[gd_scene load_steps=5 format=3 uid="uid://cxkgcl6yyt8tc"]
 
 [ext_resource type="PackedScene" uid="uid://bmuq44pupua6x" path="res://Entities/player.tscn" id="1_dq8o1"]
 [ext_resource type="PackedScene" uid="uid://ddr2ti7s4klmv" path="res://Entities/Enemy.tscn" id="2_gg2ir"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="2_mi0e0"]
+[ext_resource type="Texture2D" uid="uid://be3vcjdq63e02" path="res://Sprites/Galaxy.png" id="4_fijlb"]
 
 [node name="MainGame" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_dq8o1")]
-position = Vector2(1280, 704)
+position = Vector2(1024, 544)
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawnPoints")]
 script = ExtResource("2_mi0e0")
 enemyScene = ExtResource("2_gg2ir")
-spawnPoints = [NodePath("SpawnPoint"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint3")]
+spawnPoints = [NodePath("SpawnPoint"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4")]
 
 [node name="SpawnPoint" type="Node2D" parent="EnemySpawner"]
-position = Vector2(64, 64)
+position = Vector2(160, 128)
 
 [node name="SpawnPoint2" type="Node2D" parent="EnemySpawner"]
-position = Vector2(1856, 64)
+position = Vector2(1728, 160)
 
 [node name="SpawnPoint3" type="Node2D" parent="EnemySpawner"]
-position = Vector2(64, 992)
+position = Vector2(160, 896)
 
 [node name="SpawnPoint4" type="Node2D" parent="EnemySpawner"]
-position = Vector2(1856, 992)
+position = Vector2(1760, 928)
 
 [node name="KillCount" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Kills 0"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 1024.0
+offset_right = 1280.0
+offset_bottom = 256.0
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_fijlb")

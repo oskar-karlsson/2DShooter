@@ -1,16 +1,16 @@
 [gd_scene load_steps=6 format=3 uid="uid://ddr2ti7s4klmv"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.cs" id="1_e11na"]
-[ext_resource type="Texture2D" uid="uid://cdeygq0m3y5f1" path="res://Sprites/Enemy.png" id="1_jwr5g"]
 [ext_resource type="Script" path="res://Scripts/EnemyHealth.cs" id="2_7062k"]
+[ext_resource type="Texture2D" uid="uid://dcgoonf04u8m" path="res://Sprites/Rocket.png" id="3_0vc7j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nb4uu"]
-radius = 19.0
+radius = 14.0
 height = 56.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gfkkm"]
-radius = 24.0
-height = 70.0
+radius = 18.0
+height = 66.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["attacker"]]
 motion_mode = 1
@@ -20,21 +20,19 @@ script = ExtResource("1_e11na")
 script = ExtResource("2_7062k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_nb4uu")
-
-[node name="GFX" type="Sprite2D" parent="."]
-rotation = 1.5708
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_jwr5g")
 
 [node name="AttackRange" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
-position = Vector2(-2, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_gfkkm")
+
+[node name="Rocket" type="Sprite2D" parent="."]
+rotation = 0.785398
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_0vc7j")
 
 [connection signal="body_entered" from="AttackRange" to="." method="OnAttackRangeBodyEnter"]
 [connection signal="body_exited" from="AttackRange" to="." method="OnAttackRangeBodyExit"]
