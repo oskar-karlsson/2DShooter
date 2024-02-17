@@ -16,7 +16,6 @@ public partial class EnemySpawner : Node2D
 		timeBetweenSpawns = 1 / enemiesPerSecond;
 	}
 
-
 	public override void _Process(double delta)
 	{
 		if (timeUntilSpawns > timeBetweenSpawns)
@@ -68,7 +67,7 @@ public partial class EnemySpawner : Node2D
 		enemiesPerSecond += 0.1f;
 		timeBetweenSpawns = 1 / enemiesPerSecond;
 		Enemy.GlobalSpeedModifier += 10f;
-		Enemy.xpPerKill += 1;
+		Enemy.xpPerKill += (int)(Enemy.xpPerKill * 0.1);
 		lastKillCountAtEntry = killCount;
 	}
 }
