@@ -9,7 +9,7 @@ public partial class AreaLevel : Sprite2D
             var spawner = GetNode<EnemySpawner>(NodePaths.EnemySpawner);
             if (spawner != null && spawner.killCount > spawner.lastKillCountAtEntry)
             {
-                spawner.IncreaseSpawnRate();
+                spawner.LevelUpEnemies();
                 spawner.lastKillCountAtEntry = spawner.killCount;
             }
         }

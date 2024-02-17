@@ -58,9 +58,10 @@ public partial class EnemySpawner : Node2D
 		killCountLabel.Text = $"Kills: {killCount}";
 	}
 
-	public void IncreaseSpawnRate()
+	public void LevelUpEnemies()
 	{
 		enemiesPerSecond += 0.1f;
+		Enemy.GlobalSpeedModifier += 10f;
 		timeBetweenSpawns = 1 / enemiesPerSecond;
 	}
 }
