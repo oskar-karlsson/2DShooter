@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class AreaLevel : Sprite2D
+public partial class Galaxy : Sprite2D
 {
     public void OnEnterNextLevelEntered(Node body)
     {

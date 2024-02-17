@@ -20,5 +20,4 @@ public partial class Player : CharacterBody2D
         experience += xp;
         // Possibly check for level up or update UI here
     }
-
 }
