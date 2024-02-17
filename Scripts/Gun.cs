@@ -3,8 +3,8 @@ using Godot;
 public partial class Gun : Node2D
 {
     [Export] public PackedScene bulletScene;
-    [Export] public float bulletSpeed = 600f;
-    [Export] public float bulletsPerSecond = 1f;
+    public float bulletSpeed = 600f;
+    public float bulletsPerSecond = 1f;
 
     float timeBetweenShots;
     float timeSinceFired = 0f;

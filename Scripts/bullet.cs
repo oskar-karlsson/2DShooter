@@ -2,7 +2,7 @@ using Godot;
 
 public partial class bullet : RigidBody2D
 {
-    [Export] public float damage = 10;
+    public float damage = 10;
 
     public override void _Ready() {
         Timer timer = GetNode<Timer>(Nodes.Timer);

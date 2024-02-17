@@ -2,17 +2,12 @@ using Godot;
 
 public partial class Enemy : CharacterBody2D
 {
-    public static float GlobalSpeedModifier = 0f; // Static variable to affect all instances
-    [Export] public float baseSpeed = 100f; // Base speed for individual control if needed
-    public float speed => baseSpeed + GlobalSpeedModifier; // Calculate current speed with modifier
-    
-
     player playerCharacter;
-
-    // [Export] public float speed = 100f;
-    [Export] public float damage = 25f;
-    [Export] public float attacksPerSecond = 2f;
-
+    public static float GlobalSpeedModifier = 0f;
+    public float baseSpeed = 100f;
+    public float speed => baseSpeed + GlobalSpeedModifier;
+    public float damage = 25f;
+    public float attacksPerSecond = 2f;
     float timeBetweenAttacks;
     float timeUntilAttack;
     bool withinAttackRange = false;

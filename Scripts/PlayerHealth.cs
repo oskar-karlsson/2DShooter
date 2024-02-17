@@ -2,7 +2,7 @@ using Godot;
 
 public partial class PlayerHealth : Node2D
 {
-    [Export] public float maxHealth = 100f;
+    public float maxHealth = 100f;
 
     private float health;
 

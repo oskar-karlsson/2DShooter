@@ -2,10 +2,9 @@ using Godot;
 
 public partial class EnemyHealth : Node2D
 {
-    [Export] public float maxHealth = 20f;
-
+    public float maxHealth = 20f;
     private float health;
-
+    
     [Signal]
     public delegate void EnemyKilledEventHandler();
 
