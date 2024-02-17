@@ -8,7 +8,8 @@ public partial class EnemySpawner : Node2D
 
 	float timeBetweenSpawns;
 	float timeUntilSpawns = 0;
-	private int killCount = 0;
+	public int killCount = 0;
+	public int lastKillCountAtEntry = 0;
 
 	public override void _Ready()
 	{
@@ -37,8 +38,7 @@ public partial class EnemySpawner : Node2D
 		var enemy = (Enemy)enemyScene.Instantiate();
 		enemy.GlobalPosition = location;
 
-		// Connect the EnemyKilled signal to a method to handle the kill count
-		var enemyHealth = enemy.GetNode<EnemyHealth>(NodePaths.EnemyHealth);
+		var enemyHealth = enemy.GetNode<EnemyHealth>(Nodes.EnemyHealth);
 
 		enemyHealth.Connect(Signals.EnemyKilled, new Callable(this, nameof(OnEnemyKilled)));
 
@@ -53,8 +53,14 @@ public partial class EnemySpawner : Node2D
 
 	private void UpdateKillCountLabel()
 	{
-		var killCountLabel = (Label)GetTree().Root.GetNode(NodePaths.MainGame).GetNode(NodePaths.KillCount);
+		var killCountLabel = GetNode<Label>(NodePaths.KillCount);
 
 		killCountLabel.Text = $"Kills: {killCount}";
+	}
+
+	public void IncreaseSpawnRate()
+	{
+		enemiesPerSecond += 0.1f;
+		timeBetweenSpawns = 1 / enemiesPerSecond;
 	}
 }

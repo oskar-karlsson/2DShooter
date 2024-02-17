@@ -7,7 +7,7 @@ public static class InputActions
     public const string Click = "click";
 }
 
-public static class NodePaths
+public static class Nodes
 {
     public const string Timer = "Timer";
     public const string EnemyHealth = "EnemyHealth";
@@ -15,6 +15,12 @@ public static class NodePaths
     public const string MainGame = "MainGame";
     public const string Player = "Player";
     public const string KillCount = "KillCount";
+}
+
+public static class NodePaths
+{
+    public const string EnemySpawner = "/root/MainGame/EnemySpawner";
+    public const string KillCount = "/root/MainGame/KillCount";
 }
 
 public static class Groups

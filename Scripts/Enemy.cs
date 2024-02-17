@@ -14,7 +14,7 @@ public partial class Enemy : CharacterBody2D
 
     public override void _Ready()
     {
-        playerCharacter = (player)GetTree().Root.GetNode(NodePaths.MainGame).GetNode(NodePaths.Player);
+        playerCharacter = (player)GetTree().Root.GetNode(Nodes.MainGame).GetNode(Nodes.Player);
 
         timeBetweenAttacks = 1 / attacksPerSecond;
         ResetAttackTimer();
@@ -54,7 +54,7 @@ public partial class Enemy : CharacterBody2D
 
     public void Attack()
     {
-        playerCharacter.GetNode<PlayerHealth>(NodePaths.PlayerHealth).Damage(damage);
+        playerCharacter.GetNode<PlayerHealth>(Nodes.PlayerHealth).Damage(damage);
     }
 
     public void OnAttackRangeBodyEnter(Node2D body)

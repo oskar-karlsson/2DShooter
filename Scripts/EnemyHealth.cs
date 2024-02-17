@@ -6,7 +6,6 @@ public partial class EnemyHealth : Node2D
 
     private float health;
 
-    // Declare a signal
     [Signal]
     public delegate void EnemyKilledEventHandler();
 

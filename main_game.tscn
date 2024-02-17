@@ -1,14 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxkgcl6yyt8tc"]
+[gd_scene load_steps=7 format=3 uid="uid://cxkgcl6yyt8tc"]
 
 [ext_resource type="PackedScene" uid="uid://bmuq44pupua6x" path="res://Entities/player.tscn" id="1_dq8o1"]
 [ext_resource type="PackedScene" uid="uid://ddr2ti7s4klmv" path="res://Entities/Enemy.tscn" id="2_gg2ir"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="2_mi0e0"]
 [ext_resource type="Texture2D" uid="uid://be3vcjdq63e02" path="res://Sprites/Galaxy.png" id="4_fijlb"]
+[ext_resource type="Script" path="res://Scripts/AreaLevel.cs" id="5_fcwxn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u767"]
+size = Vector2(213.333, 213.333)
 
 [node name="MainGame" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_dq8o1")]
-position = Vector2(1024, 544)
+position = Vector2(992, 512)
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawnPoints")]
 script = ExtResource("2_mi0e0")
@@ -32,9 +36,15 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "Kills 0"
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = 1024.0
-offset_right = 1280.0
-offset_bottom = 256.0
-scale = Vector2(0.2, 0.2)
+[node name="AreaLevel" type="Sprite2D" parent="."]
+position = Vector2(992, 64)
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_fijlb")
+script = ExtResource("5_fcwxn")
+
+[node name="EnterNextLevel" type="Area2D" parent="AreaLevel"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaLevel/EnterNextLevel"]
+shape = SubResource("RectangleShape2D_8u767")
+
+[connection signal="body_entered" from="AreaLevel/EnterNextLevel" to="AreaLevel" method="OnEnterNextLevelEntered"]
