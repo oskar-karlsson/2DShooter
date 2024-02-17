@@ -10,7 +10,6 @@ public partial class AreaLevel : Sprite2D
             if (spawner != null && spawner.killCount > spawner.lastKillCountAtEntry)
             {
                 spawner.LevelUpEnemies();
-                spawner.lastKillCountAtEntry = spawner.killCount;
             }
         }
     }

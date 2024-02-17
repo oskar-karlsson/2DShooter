@@ -3,6 +3,7 @@ using Godot;
 public partial class player : CharacterBody2D
 {
     public float speed = 150f;
+    public int experience = 0;
 
     public override void _PhysicsProcess(double delta){
         LookAt(GetGlobalMousePosition());
@@ -13,4 +14,11 @@ public partial class player : CharacterBody2D
 
         MoveAndSlide();
     }
+
+    public void AddExperience(int xp)
+    {
+        experience += xp;
+        // Possibly check for level up or update UI here
+    }
+
 }

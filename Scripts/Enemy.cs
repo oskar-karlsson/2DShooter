@@ -2,8 +2,9 @@ using Godot;
 
 public partial class Enemy : CharacterBody2D
 {
-    player playerCharacter;
+    player player;
     public static float GlobalSpeedModifier = 0f;
+    public static int xpPerKill = 10;
     public float baseSpeed = 100f;
     public float speed => baseSpeed + GlobalSpeedModifier;
     public float damage = 25f;
@@ -14,7 +15,7 @@ public partial class Enemy : CharacterBody2D
 
     public override void _Ready()
     {
-        playerCharacter = (player)GetTree().Root.GetNode(Nodes.MainGame).GetNode(Nodes.Player);
+        player = (player)GetTree().Root.GetNode(Nodes.MainGame).GetNode(Nodes.Player);
 
         timeBetweenAttacks = 1 / attacksPerSecond;
         ResetAttackTimer();
@@ -41,9 +42,9 @@ public partial class Enemy : CharacterBody2D
             return;
         }
 
-        LookAt(playerCharacter.GlobalPosition);
+        LookAt(player.GlobalPosition);
 
-        var playerPosition = playerCharacter.GlobalPosition;
+        var playerPosition = player.GlobalPosition;
         var enemyPosition = GlobalPosition;
 
         var direction = (playerPosition - enemyPosition).Normalized();
@@ -54,7 +55,7 @@ public partial class Enemy : CharacterBody2D
 
     public void Attack()
     {
-        playerCharacter.GetNode<PlayerHealth>(Nodes.PlayerHealth).Damage(damage);
+        player.GetNode<PlayerHealth>(Nodes.PlayerHealth).Damage(damage);
     }
 
     public void OnAttackRangeBodyEnter(Node2D body)
@@ -81,7 +82,7 @@ public partial class Enemy : CharacterBody2D
 
     private bool PlayerAlive()
     {
-        if (playerCharacter != null && IsInstanceValid(playerCharacter))
+        if (player != null && IsInstanceValid(player))
         {
             return true;
         }

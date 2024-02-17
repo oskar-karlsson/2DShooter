@@ -49,6 +49,11 @@ public partial class EnemySpawner : Node2D
 	{
 		killCount++;
 		UpdateKillCountLabel();
+		var player = (player)GetTree().Root.GetNode(Nodes.MainGame).GetNode(Nodes.Player);
+		if (player != null)
+		{
+			player.AddExperience(Enemy.xpPerKill);
+		}
 	}
 
 	private void UpdateKillCountLabel()
@@ -61,7 +66,9 @@ public partial class EnemySpawner : Node2D
 	public void LevelUpEnemies()
 	{
 		enemiesPerSecond += 0.1f;
-		Enemy.GlobalSpeedModifier += 10f;
 		timeBetweenSpawns = 1 / enemiesPerSecond;
+		Enemy.GlobalSpeedModifier += 10f;
+		Enemy.xpPerKill += 1;
+		lastKillCountAtEntry = killCount;
 	}
 }
