@@ -49,7 +49,7 @@ public partial class EnemySpawner : Node2D
 	{
 		killCount++;
 		UpdateKillCountLabel();
-		var player = (player)GetTree().Root.GetNode(Nodes.MainGame).GetNode(Nodes.Player);
+		var player = (Player)GetTree().Root.GetNode(Nodes.MainGame).GetNode(Nodes.Player);
 		if (player != null)
 		{
 			player.AddExperience(Enemy.xpPerKill);

@@ -2,7 +2,7 @@ using Godot;
 
 public partial class Enemy : CharacterBody2D
 {
-    player player;
+    Player player;
     public static float GlobalSpeedModifier = 0f;
     public static int xpPerKill = 10;
     public float baseSpeed = 100f;
@@ -15,7 +15,7 @@ public partial class Enemy : CharacterBody2D
 
     public override void _Ready()
     {
-        player = (player)GetTree().Root.GetNode(Nodes.MainGame).GetNode(Nodes.Player);
+        player = (Player)GetTree().Root.GetNode(Nodes.MainGame).GetNode(Nodes.Player);
 
         timeBetweenAttacks = 1 / attacksPerSecond;
         ResetAttackTimer();

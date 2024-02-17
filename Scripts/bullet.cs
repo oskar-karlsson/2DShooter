@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class bullet : RigidBody2D
+public partial class Bullet : RigidBody2D
 {
     public float damage = 10;
 

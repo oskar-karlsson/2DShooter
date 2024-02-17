@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class player : CharacterBody2D
+public partial class Player : CharacterBody2D
 {
     public float speed = 150f;
     public int experience = 0;
