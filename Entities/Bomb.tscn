@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dm5qmvk16onet"]
+
+[ext_resource type="Script" path="res://Scripts/Bomb.cs" id="1_4auwk"]
+[ext_resource type="Texture2D" uid="uid://c8e7la7tx28my" path="res://Sprites/Bomb.png" id="1_pbggd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k7qdl"]
+radius = 96.0
+
+[node name="Bomb" type="Area2D"]
+script = ExtResource("1_4auwk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pbggd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k7qdl")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]
