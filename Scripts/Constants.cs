@@ -7,7 +7,7 @@ public static class InputActions
     public const string Click = "click";
 }
 
-public static class Nodes
+public static class NodeNames
 {
     public const string Timer = "Timer";
     public const string EnemyHealth = "EnemyHealth";

@@ -37,7 +37,7 @@ public partial class EnemySpawner : Node2D
 		var enemy = (Enemy)enemyScene.Instantiate();
 		enemy.GlobalPosition = location;
 
-		var enemyHealth = enemy.GetNode<EnemyHealth>(Nodes.EnemyHealth);
+		var enemyHealth = enemy.GetNode<EnemyHealth>(NodeNames.EnemyHealth);
 
 		enemyHealth.Connect(Signals.EnemyKilled, new Callable(this, nameof(OnEnemyKilled)));
 
@@ -48,7 +48,7 @@ public partial class EnemySpawner : Node2D
 	{
 		killCount++;
 		UpdateKillCountLabel();
-		var player = (Player)GetTree().Root.GetNode(Nodes.MainGame).GetNode(Nodes.Player);
+		var player = (Player)GetTree().Root.GetNode(NodeNames.MainGame).GetNode(NodeNames.Player);
 		if (player != null)
 		{
 			player.AddExperience(Enemy.xpPerKill);
