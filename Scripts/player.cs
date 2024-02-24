@@ -6,17 +6,20 @@ public partial class Player : CharacterBody2D
     public float speed = 150f;
     public int experience = 0;
     private int currentLevel = 0;
-    // private List<int> experienceLevels = new List<int>{100, 300, 600, 1000, 1500}; // Example thresholds
-    private List<int> experienceLevels = new List<int>{20, 60, 120, 200, 300}; // Example thresholds
+    private List<int> experienceLevels = new List<int>(); // Start with an empty list
 
+    public Player()
+    {
+        AddNextExperienceLevel();
+    }
 
     public override void _Process(double delta)
-{
-    if (Input.IsActionJustPressed("rightClick"))
     {
-        PlaceBomb();
+        if (Input.IsActionJustPressed("rightClick"))
+        {
+            PlaceBomb();
+        }
     }
-}
 
     public override void _PhysicsProcess(double delta){
         LookAt(GetGlobalMousePosition());
@@ -50,14 +53,15 @@ public partial class Player : CharacterBody2D
         GetParent().AddChild(bomb); // Assuming the player and bombs are on the same node level
     }
 
-        private void CheckForLevelUp()
+    private void CheckForLevelUp()
     {
-        // Check if the player's experience has reached the next level's threshold
+        // Since only one level can be gained at a time, check the next level's threshold
         if (currentLevel < experienceLevels.Count && experience >= experienceLevels[currentLevel])
         {
-            // Level up!
             currentLevel++;
+            GD.Print("Level Up! Current Level: ", currentLevel);
             SpawnPowerUps(); // Method to spawn power-ups
+            AddNextExperienceLevel(); // Add the next level threshold
         }
     }
 
@@ -87,5 +91,32 @@ public partial class Player : CharacterBody2D
         mainGameNode.CallDeferred("add_child", puEngine);
         mainGameNode.CallDeferred("add_child", puGun);
         mainGameNode.CallDeferred("add_child", puBullet);
+    }
+
+    // private void AddNextExperienceLevel()
+    // {
+    //     // Simple linear growth formula; adjust as needed for your game's balance
+    //     int nextLevelExp = 100 + (currentLevel * 200); // Example formula
+    //     experienceLevels.Add(nextLevelExp);
+    // }
+
+    private int additionalIncrease = 100; // Start with 200 for the first level, will increase by 100 each time
+
+    private void AddNextExperienceLevel()
+    {
+        // If it's the first level, set the base. Otherwise, increase the increase by 100 more than last time.
+        if (experienceLevels.Count == 0)
+        {
+            experienceLevels.Add(100); // Base XP for the first level
+        }
+        else
+        {
+            // Calculate the next level's XP based on the last level's XP plus the current increase
+            int nextLevelExp = experienceLevels[experienceLevels.Count - 1] + additionalIncrease;
+            experienceLevels.Add(nextLevelExp);
+        }
+
+        // Increase the additionalIncrease for the next level
+        additionalIncrease += 100;
     }
 }
