@@ -47,7 +47,7 @@ public partial class EnemySpawner : Node2D
 	private void OnEnemyKilled()
 	{
 		killCount++;
-		UpdateKillCountLabel();
+		UpdateUI();
 		var player = (Player)GetTree().Root.GetNode(NodeNames.MainGame).GetNode(NodeNames.Player);
 		if (player != null)
 		{
@@ -55,7 +55,7 @@ public partial class EnemySpawner : Node2D
 		}
 	}
 
-	private void UpdateKillCountLabel()
+	private void UpdateUI()
 	{
 		var killCountLabel = GetNode<Label>(NodePaths.KillCount);
 

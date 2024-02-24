@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsgwfnjeod48l"]
+
+[ext_resource type="Script" path="res://Scripts/PuGun.cs" id="1_dq7f6"]
+[ext_resource type="Texture2D" uid="uid://bjfb4ilaf8os8" path="res://Sprites/PuGun.png" id="1_wu14t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ntlry"]
+size = Vector2(42, 32)
+
+[node name="PuGun" type="Area2D"]
+script = ExtResource("1_dq7f6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_wu14t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ntlry")

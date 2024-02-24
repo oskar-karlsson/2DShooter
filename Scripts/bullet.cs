@@ -5,7 +5,7 @@ public partial class Bullet : RigidBody2D
     public float damage = 10;
 
     public override void _Ready() {
-        Timer timer = GetNode<Timer>(NodeNames.Timer);
+        var timer = GetNode<Timer>(NodeNames.Timer);
         timer.Timeout += () => QueueFree();
     }
 

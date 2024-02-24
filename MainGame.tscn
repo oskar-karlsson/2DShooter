@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxkgcl6yyt8tc"]
+[gd_scene load_steps=8 format=3 uid="uid://cxkgcl6yyt8tc"]
 
 [ext_resource type="PackedScene" uid="uid://bmuq44pupua6x" path="res://Entities/Player.tscn" id="1_dh0x5"]
 [ext_resource type="Script" path="res://Scripts/EnemySpawner.cs" id="2_vgavf"]
 [ext_resource type="PackedScene" uid="uid://ddr2ti7s4klmv" path="res://Entities/Enemy.tscn" id="3_fi81e"]
 [ext_resource type="Texture2D" uid="uid://be3vcjdq63e02" path="res://Sprites/Galaxy.png" id="4_yno6a"]
 [ext_resource type="Script" path="res://Scripts/Galaxy.cs" id="5_1xd27"]
+[ext_resource type="Script" path="res://Scripts/PowerUps.cs" id="6_nqi6y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8u767"]
 size = Vector2(213.333, 213.333)
@@ -31,11 +32,6 @@ position = Vector2(160, 896)
 [node name="SpawnPoint4" type="Node2D" parent="EnemySpawner"]
 position = Vector2(1760, 928)
 
-[node name="KillCount" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Kills 0"
-
 [node name="Galaxy" type="Sprite2D" parent="."]
 position = Vector2(992, 64)
 scale = Vector2(0.3, 0.3)
@@ -46,5 +42,46 @@ script = ExtResource("5_1xd27")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Galaxy/EnterNextLevel"]
 shape = SubResource("RectangleShape2D_8u767")
+
+[node name="KillCount" type="Label" parent="."]
+offset_right = 45.0
+offset_bottom = 23.0
+text = "Kills: 0"
+
+[node name="XP" type="Label" parent="."]
+offset_left = 96.0
+offset_right = 136.0
+offset_bottom = 23.0
+text = "XP: 0"
+
+[node name="PlayerLevel" type="Label" parent="."]
+offset_left = 288.0
+offset_right = 346.0
+offset_bottom = 23.0
+text = "Level: 1"
+
+[node name="AreaLevel" type="Label" parent="."]
+offset_left = 192.0
+offset_right = 262.0
+offset_bottom = 23.0
+text = "Galaxy: 1"
+
+[node name="HP" type="Label" parent="."]
+offset_left = 384.0
+offset_right = 472.0
+offset_bottom = 23.0
+text = "HP: 100"
+
+[node name="PowerUps" type="Marker2D" parent="."]
+script = ExtResource("6_nqi6y")
+
+[node name="PuEngine" type="Marker2D" parent="PowerUps"]
+position = Vector2(672, 992)
+
+[node name="PuGun" type="Marker2D" parent="PowerUps"]
+position = Vector2(960, 992)
+
+[node name="PuBullet" type="Marker2D" parent="PowerUps"]
+position = Vector2(1248, 992)
 
 [connection signal="body_entered" from="Galaxy/EnterNextLevel" to="Galaxy" method="OnEnterNextLevelEntered"]

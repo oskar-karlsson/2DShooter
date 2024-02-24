@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlr1uvyn37nuj"]
+
+[ext_resource type="Texture2D" uid="uid://n1o6srnso3pl" path="res://Sprites/PuBullet.png" id="1_jck3l"]
+[ext_resource type="Script" path="res://Scripts/PuBullet.cs" id="1_o4rbs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfgkb"]
+size = Vector2(27, 35)
+
+[node name="PuBullet" type="Area2D"]
+script = ExtResource("1_o4rbs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_jck3l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.5, -1.5)
+shape = SubResource("RectangleShape2D_bfgkb")

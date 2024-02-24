@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://ck0kr52nohtn1"]
+
+[ext_resource type="Texture2D" uid="uid://bteyfsnrm1vka" path="res://Sprites/PuEngine.png" id="1_53pcr"]
+[ext_resource type="Script" path="res://Scripts/PuEngine.cs" id="1_lvqat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_meddn"]
+size = Vector2(33, 49)
+
+[node name="PuEngine" type="Area2D"]
+script = ExtResource("1_lvqat")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_53pcr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, -0.5)
+shape = SubResource("RectangleShape2D_meddn")
