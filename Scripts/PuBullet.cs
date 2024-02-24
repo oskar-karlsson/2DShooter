@@ -14,7 +14,7 @@ public partial class PuBullet : Area2D
         {
             // Assuming the player has a child node named "Gun" that uses the Gun.cs script
             var playerGun = body.GetNode<Gun>(NodeNames.Gun);
-			playerGun.bulletSpeed += 900;
+			playerGun.bulletSpeed += 200;
 
 			RemoveOtherPowerUps();
 

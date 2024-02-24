@@ -6,7 +6,8 @@ public partial class Player : CharacterBody2D
     public float speed = 150f;
     public int experience = 0;
     private int currentLevel = 1;
-    private List<int> experienceLevels = new List<int>(); // Start with an empty list
+    private List<int> experienceLevels = new List<int>{ 50 };
+    private int additionalXpIncrease = 50; // Start with 200 for the first level, will increase by 100 each time
 
     public Player()
     {
@@ -101,23 +102,12 @@ public partial class Player : CharacterBody2D
         mainGameNode.CallDeferred("add_child", puBullet);
     }
 
-    private int additionalIncrease = 100; // Start with 200 for the first level, will increase by 100 each time
-
     private void AddNextExperienceLevel()
     {
-        // If it's the first level, set the base. Otherwise, increase the increase by 100 more than last time.
-        if (experienceLevels.Count == 0)
-        {
-            experienceLevels.Add(100); // Base XP for the first level to level up
-        }
-        else
-        {
-            // Calculate the next level's XP based on the last level's XP plus the current increase
-            int nextLevelExp = experienceLevels[experienceLevels.Count - 1] + additionalIncrease;
-            experienceLevels.Add(nextLevelExp);
-        }
+        int nextLevelExp = experienceLevels[experienceLevels.Count - 1] + additionalXpIncrease;
+        experienceLevels.Add(nextLevelExp);
 
         // Increase the additionalIncrease for the next level
-        additionalIncrease += 100;
+        additionalXpIncrease += 50;
     }
 }

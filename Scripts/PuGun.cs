@@ -16,7 +16,7 @@ public partial class PuGun : Area2D
             var playerGun = body.GetNode<Gun>(NodeNames.Gun);
 
 			// Directly increase bulletsPerSecond or call a method to do so
-			playerGun.bulletsPerSecond += 10f; // Adjust the value as needed
+			playerGun.bulletsPerSecond += 0.1f; // Adjust the value as needed
 
 			RemoveOtherPowerUps();
 

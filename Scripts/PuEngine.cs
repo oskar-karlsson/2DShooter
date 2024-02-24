@@ -13,23 +13,15 @@ public partial class PuEngine : Area2D
         if (body is Player)
         {
             // Apply the power-up effect
-            ApplyEffect(body as Player);
 
-			// var player = (Player)body;
-			// var player = body as Player;
-			// player.speed += 500;
+			var player = (Player)body;
+			player.speed += 50;
 
 			RemoveOtherPowerUps();
 
             // Remove the power-up from the scene
             QueueFree();
         }
-    }
-
-    private void ApplyEffect(Player player)
-    {
-        // Example effect: Increase player speed
-        player.speed += 500; // Adjust according to how you've implemented speed in Player.cs
     }
 
 	private void RemoveOtherPowerUps()
