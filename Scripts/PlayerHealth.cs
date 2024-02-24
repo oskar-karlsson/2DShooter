@@ -4,7 +4,7 @@ public partial class PlayerHealth : Node2D
 {
     public float maxHealth = 100f;
 
-    private float health;
+    public float health;
 
     public override void _Ready()
     {
@@ -28,4 +28,10 @@ public partial class PlayerHealth : Node2D
 
 		hp.Text = $"HP: {health}";
 	}
+
+    public void Heal()
+    {
+        health = 100;
+        UpdateUI();
+    }
 }

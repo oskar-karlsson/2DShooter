@@ -25,6 +25,7 @@ public static class NodePaths
     public const string EnemySpawner = "/root/MainGame/EnemySpawner";
     public const string KillCount = "/root/MainGame/KillCount";
     public const string XP = "/root/MainGame/XP";
+    public const string PlayerLevel = "/root/MainGame/PlayerLevel";
     public const string AreaLevel = "/root/MainGame/AreaLevel";
     public const string HP = "/root/MainGame/HP";
 }

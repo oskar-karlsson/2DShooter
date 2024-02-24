@@ -4,7 +4,7 @@ public partial class Enemy : CharacterBody2D
 {
     Player player;
     public static float GlobalSpeedModifier = 0f;
-    public static int xpPerKill = 10;
+    public static int xpPerKill = 100;
     public float baseSpeed = 100f;
     public float speed => baseSpeed + GlobalSpeedModifier;
     public float damage = 25f;
