@@ -14,10 +14,10 @@ public static class NodeNames
     public const string PlayerHealth = "PlayerHealth";
     public const string MainGame = "MainGame";
     public const string Player = "Player";
+    public const string Gun = "Gun";
     public const string PuEngine = "PuEngine";
     public const string PuGun = "PuGun";
-    public const string PuBullet = "PuBullet";
-    public const string Gun = "Gun";
+    public const string PuBomb = "PuBomb";
 }
 
 public static class NodePaths

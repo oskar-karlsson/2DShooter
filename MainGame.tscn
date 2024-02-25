@@ -13,7 +13,7 @@ size = Vector2(213.333, 213.333)
 [node name="MainGame" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_dh0x5")]
-position = Vector2(992, 512)
+position = Vector2(1280, 640)
 
 [node name="EnemySpawner" type="Node2D" parent="." node_paths=PackedStringArray("spawnPoints")]
 script = ExtResource("2_vgavf")
@@ -21,19 +21,19 @@ enemyScene = ExtResource("3_fi81e")
 spawnPoints = [NodePath("SpawnPoint"), NodePath("SpawnPoint2"), NodePath("SpawnPoint3"), NodePath("SpawnPoint4")]
 
 [node name="SpawnPoint" type="Node2D" parent="EnemySpawner"]
-position = Vector2(160, 128)
+position = Vector2(256, 256)
 
 [node name="SpawnPoint2" type="Node2D" parent="EnemySpawner"]
-position = Vector2(1728, 160)
+position = Vector2(2304, 256)
 
 [node name="SpawnPoint3" type="Node2D" parent="EnemySpawner"]
-position = Vector2(160, 896)
+position = Vector2(256, 1216)
 
 [node name="SpawnPoint4" type="Node2D" parent="EnemySpawner"]
-position = Vector2(1760, 928)
+position = Vector2(2304, 1216)
 
 [node name="Galaxy" type="Sprite2D" parent="."]
-position = Vector2(992, 64)
+position = Vector2(1280, 256)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("4_yno6a")
 script = ExtResource("5_1xd27")
@@ -76,12 +76,12 @@ text = "HP: 100"
 script = ExtResource("6_nqi6y")
 
 [node name="PuEngine" type="Marker2D" parent="PowerUps"]
-position = Vector2(672, 992)
+position = Vector2(992, 1152)
 
 [node name="PuGun" type="Marker2D" parent="PowerUps"]
-position = Vector2(960, 992)
+position = Vector2(1280, 1152)
 
-[node name="PuBullet" type="Marker2D" parent="PowerUps"]
-position = Vector2(1248, 992)
+[node name="PuBomb" type="Marker2D" parent="PowerUps"]
+position = Vector2(1568, 1152)
 
 [connection signal="body_entered" from="Galaxy/EnterNextLevel" to="Galaxy" method="OnEnterNextLevelEntered"]

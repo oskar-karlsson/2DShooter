@@ -1,6 +1,6 @@
 using Godot;
 
-public partial class PuBullet : Area2D
+public partial class PuBomb : Area2D
 {
     public override void _Ready()
     {
@@ -14,7 +14,7 @@ public partial class PuBullet : Area2D
         {
             // Assuming the player has a child node named "Gun" that uses the Gun.cs script
             var playerGun = body.GetNode<Gun>(NodeNames.Gun);
-			playerGun.bulletSpeed += 200;
+			playerGun.bulletSpeed += 2000;
 
 			RemoveOtherPowerUps();
 

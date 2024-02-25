@@ -79,27 +79,27 @@ public partial class Player : CharacterBody2D
         // Assuming you have set up paths or references to your power-up scenes
         PackedScene puSpeedScene = (PackedScene)ResourceLoader.Load("res://Entities/PuEngine.tscn");
         PackedScene puFireRateScene = (PackedScene)ResourceLoader.Load("res://Entities/PuGun.tscn");
-        PackedScene puRangeScene = (PackedScene)ResourceLoader.Load("res://Entities/PuBullet.tscn");
+        PackedScene puRangeScene = (PackedScene)ResourceLoader.Load("res://Entities/PuBomb.tscn");
 
         // Instantiate power-ups
         Node2D puEngine = (Node2D)puSpeedScene.Instantiate();
         Node2D puGun = (Node2D)puFireRateScene.Instantiate();
-        Node2D puBullet = (Node2D)puRangeScene.Instantiate();
+        Node2D puBomb = (Node2D)puRangeScene.Instantiate();
 
         puEngine.AddToGroup(Groups.PowerUps);
         puGun.AddToGroup(Groups.PowerUps);
-        puBullet.AddToGroup(Groups.PowerUps);
+        puBomb.AddToGroup(Groups.PowerUps);
 
         var mainGameNode = GetTree().Root.GetNode(NodeNames.MainGame);
 
         // Set positions
         puEngine.Position = GetNode<Marker2D>("/root/MainGame/PowerUps/PuEngine").Position;
         puGun.Position = GetNode<Marker2D>("/root/MainGame/PowerUps/PuGun").Position;
-        puBullet.Position = GetNode<Marker2D>("/root/MainGame/PowerUps/PuBullet").Position;
+        puBomb.Position = GetNode<Marker2D>("/root/MainGame/PowerUps/PuBomb").Position;
 
         mainGameNode.CallDeferred("add_child", puEngine);
         mainGameNode.CallDeferred("add_child", puGun);
-        mainGameNode.CallDeferred("add_child", puBullet);
+        mainGameNode.CallDeferred("add_child", puBomb);
     }
 
     private void AddNextExperienceLevel()

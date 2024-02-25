@@ -10,11 +10,6 @@ public partial class PowerUps : Marker2D
         // Populate the list with your Marker2D nodes
         powerUpSpawnLocations.Add(GetNode<Marker2D>(NodeNames.PuEngine));
         powerUpSpawnLocations.Add(GetNode<Marker2D>(NodeNames.PuGun));
-        powerUpSpawnLocations.Add(GetNode<Marker2D>(NodeNames.PuBullet));
+        powerUpSpawnLocations.Add(GetNode<Marker2D>(NodeNames.PuBomb));
     }
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-	}
 }
