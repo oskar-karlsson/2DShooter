@@ -18,9 +18,6 @@ public partial class PuEngine : Area2D
 			player.speed += 50;
 
 			RemoveOtherPowerUps();
-
-            // Remove the power-up from the scene
-            QueueFree();
         }
     }
 
@@ -31,12 +28,7 @@ public partial class PuEngine : Area2D
 
 		foreach (var powerUp in powerUps)
 		{
-			// Ensure we're only removing other power-ups, not the one currently being collected
-			if (powerUp != this)
-			{
-				// Cast to Node if necessary and remove it
-				powerUp?.QueueFree();
-			}
+            powerUp.QueueFree();
 		}
 	}
 }

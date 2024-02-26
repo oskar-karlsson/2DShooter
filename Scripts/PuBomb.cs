@@ -17,12 +17,10 @@ public partial class PuBomb : Area2D
 			if (player.BombCooldown > 4)
 			{
 				player.BombCooldown -= 2;
-
 				player.ResetBombPlacement();
 
-				// Since the value is reduced, remove all power-ups
 				RemoveOtherPowerUps();
-				QueueFree();
+
 			}
 		}
 	}
@@ -34,12 +32,7 @@ public partial class PuBomb : Area2D
 
 		foreach (var powerUp in powerUps)
 		{
-			// Ensure we're only removing other power-ups, not the one currently being collected
-			if (powerUp != this)
-			{
-				// Cast to Node if necessary and remove it
-				powerUp?.QueueFree();
-			}
+            powerUp.QueueFree();
 		}
 	}
 }
