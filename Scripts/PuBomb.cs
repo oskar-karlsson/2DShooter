@@ -8,20 +8,24 @@ public partial class PuBomb : Area2D
         Connect(Signals.body_entered, new Callable(this, nameof(OnBodyEntered)));
     }
 
-    private void OnBodyEntered(Node body)
-    {
-        if (body is Player)
-        {
-            // Assuming the player has a child node named "Gun" that uses the Gun.cs script
-            var playerGun = body.GetNode<Gun>(NodeNames.Gun);
-			playerGun.bulletSpeed += 2000;
+	private void OnBodyEntered(Node body)
+	{
+		// Check if the entered body is the player
+		if (body is Player player)
+		{
+			// Check if BombCooldown can be reduced
+			if (player.BombCooldown > 4)
+			{
+				player.BombCooldown -= 2;
 
-			RemoveOtherPowerUps();
+				player.ResetBombPlacement();
 
-            // Remove the power-up from the scene
-            QueueFree();
-        }
-    }
+				// Since the value is reduced, remove all power-ups
+				RemoveOtherPowerUps();
+				QueueFree();
+			}
+		}
+	}
 
 	private void RemoveOtherPowerUps()
 	{

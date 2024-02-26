@@ -7,7 +7,12 @@ public partial class Player : CharacterBody2D
     public int experience = 0;
     private int currentLevel = 1;
     private List<int> experienceLevels = new List<int>{ 50 };
-    private int additionalXpIncrease = 50; // Start with 200 for the first level, will increase by 100 each time
+    private int additionalXpIncrease = 20; // Start with 200 for the first level, will increase by 100 each time
+
+    [Export]
+    private PackedScene BombScene; // The bomb scene to instance
+    public float BombCooldown = 20f; // Cooldown in seconds
+    private bool CanPlaceBomb = true; // Flag to control bomb placement
 
     public Player()
     {
@@ -18,7 +23,8 @@ public partial class Player : CharacterBody2D
     {
         if (Input.IsActionJustPressed("rightClick"))
         {
-            PlaceBomb();
+            // PlaceBomb();
+            TryPlaceBomb();
         }
     }
 
@@ -45,12 +51,32 @@ public partial class Player : CharacterBody2D
 		xpLabel.Text = $"XP: {experience}";
 	}
 
-    private void PlaceBomb()
+    // private void PlaceBomb()
+    // {
+    //     var bombScene = (PackedScene)ResourceLoader.Load(Scenes.Bomb);
+    //     var bomb = (Bomb)bombScene.Instantiate();
+    //     bomb.Position = Position; // Or a specified offset
+    //     GetParent().AddChild(bomb); // Assuming the player and bombs are on the same node level
+    // }
+
+    private void TryPlaceBomb()
     {
-        var bombScene = (PackedScene)ResourceLoader.Load(Scenes.Bomb);
-        Bomb bomb = (Bomb)bombScene.Instantiate();
-        bomb.Position = Position; // Or a specified offset
-        GetParent().AddChild(bomb); // Assuming the player and bombs are on the same node level
+        if (CanPlaceBomb)
+        {
+            // var bomb = (Bomb)BombScene.Instantiate();
+            var bomb = BombScene.Instantiate<Bomb>();
+            GetParent().AddChild(bomb); // Adjust based on your scene structure
+            bomb.GlobalPosition = GlobalPosition; // Place the bomb at the player's position
+
+            CanPlaceBomb = false; // Prevent new bombs from being placed
+            // Start cooldown
+            GetTree().CreateTimer(BombCooldown).Connect("timeout", new Callable(this, nameof(ResetBombPlacement)));
+        }
+    }
+
+    public void ResetBombPlacement()
+    {
+        CanPlaceBomb = true; // Allow bombs to be placed again
     }
 
     private void CheckForLevelUp()
