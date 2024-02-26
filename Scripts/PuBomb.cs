@@ -19,6 +19,7 @@ public partial class PuBomb : Area2D
 				player.BombExplosionRadius += 5;
 				player.BombCooldown -= 2;
 				player.ResetBombPlacement();
+				player.UpdatePlayserStatsUi();
 				RemoveOtherPowerUps();
 			}
 		}

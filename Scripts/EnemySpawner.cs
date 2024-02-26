@@ -10,6 +10,7 @@ public partial class EnemySpawner : Node2D
 	float timeUntilSpawns = 0;
 	public int killCount = 0;
 	public int lastKillCountAtEntry = 0;
+	public bool playerIsAlive = true;
 
 	public override void _Ready()
 	{
@@ -18,15 +19,18 @@ public partial class EnemySpawner : Node2D
 
 	public override void _Process(double delta)
 	{
-		if (timeUntilSpawns > timeBetweenSpawns)
-		{
-			Spawn();
+        if (playerIsAlive)
+        {
+			if (timeUntilSpawns > timeBetweenSpawns)
+			{
+				Spawn();
 
-			timeUntilSpawns = 0;
-		}
-		else
-		{
-			timeUntilSpawns += (float)delta;
+				timeUntilSpawns = 0;
+			}
+			else
+			{
+				timeUntilSpawns += (float)delta;
+			}
 		}
 	}
 

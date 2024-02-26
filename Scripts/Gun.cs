@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class Gun : Node2D
@@ -45,4 +46,12 @@ public partial class Gun : Node2D
             timeSinceFired += (float)delta;
         }
     }
+
+    public void UpdateGunStatusUi()
+	{
+        _bulletsPerSecond = (float)Math.Round(_bulletsPerSecond, 1);
+
+		var gunStats = GetNode<Label>(NodePaths.GunStats);
+		gunStats.Text = $"Rate of Fire: {_bulletsPerSecond}\nBulletspeed: {bulletSpeed}";
+	}
 }

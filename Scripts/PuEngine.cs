@@ -16,7 +16,7 @@ public partial class PuEngine : Area2D
 
 			var player = (Player)body;
 			player.speed += 50;
-
+            player.UpdatePlayserStatsUi();
 			RemoveOtherPowerUps();
         }
     }

@@ -28,6 +28,8 @@ public static class NodePaths
     public const string PlayerLevel = "/root/MainGame/PlayerLevel";
     public const string AreaLevel = "/root/MainGame/AreaLevel";
     public const string HP = "/root/MainGame/HP";
+    public const string PlayerStats = "/root/MainGame/PlayerStats";
+    public const string GunStats = "/root/MainGame/GunStats";
 }
 
 public static class Groups
@@ -41,9 +43,4 @@ public static class Signals
 {
     public const string EnemyKilled = "EnemyKilled";
     public const string body_entered = "body_entered";
-}
-
-public static class Scenes
-{
-    public const string Bomb = "res://Entities/Bomb.tscn";
 }

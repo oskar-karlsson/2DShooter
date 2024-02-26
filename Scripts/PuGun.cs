@@ -18,7 +18,7 @@ public partial class PuGun : Area2D
 			// Directly increase bulletsPerSecond or call a method to do so
 			playerGun.bulletsPerSecond += 0.2f; // Adjust the value as needed
 			playerGun.bulletSpeed += 150;
-
+            playerGun.UpdateGunStatusUi();
 			RemoveOtherPowerUps();
         }
     }

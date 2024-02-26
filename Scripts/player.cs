@@ -53,6 +53,12 @@ public partial class Player : CharacterBody2D
 		xpLabel.Text = $"XP: {experience}";
 	}
 
+    public void UpdatePlayserStatsUi()
+	{
+		var playerStats = GetNode<Label>(NodePaths.PlayerStats);
+		playerStats.Text = $"Speed: {speed}\nBomb Radius: {BombExplosionRadius}\nBomb Time: {BombCooldown}";
+	}
+
     // private void PlaceBomb()
     // {
     //     var bombScene = (PackedScene)ResourceLoader.Load(Scenes.Bomb);

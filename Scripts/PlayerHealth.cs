@@ -18,6 +18,7 @@ public partial class PlayerHealth : Node2D
 
         if (health <= 0)
         {
+            PlayerIsDead();
             GetParent().QueueFree();
         }
     }
@@ -34,4 +35,10 @@ public partial class PlayerHealth : Node2D
         health = 100;
         UpdateUI();
     }
+
+    private void PlayerIsDead()
+	{
+        var spawner = GetNode<EnemySpawner>(NodePaths.EnemySpawner);
+        spawner.playerIsAlive = false;
+	}
 }

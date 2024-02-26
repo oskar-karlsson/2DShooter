@@ -18,7 +18,7 @@ public partial class Enemy : CharacterBody2D
         player = (Player)GetTree().Root.GetNode(NodeNames.MainGame).GetNode(NodeNames.Player);
 
         timeBetweenAttacks = 1 / attacksPerSecond;
-        ResetAttackTimer();
+        ResetAttackTimer();   
     }
 
     public override void _Process(double delta)
