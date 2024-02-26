@@ -13,6 +13,8 @@ public partial class Player : CharacterBody2D
     private PackedScene BombScene; // The bomb scene to instance
     public float BombCooldown = 20f; // Cooldown in seconds
     private bool CanPlaceBomb = true; // Flag to control bomb placement
+    public float BombExplosionRadius = 80f; // Default explosion radius
+
 
     public Player()
     {
@@ -67,7 +69,7 @@ public partial class Player : CharacterBody2D
             var bomb = BombScene.Instantiate<Bomb>();
             GetParent().AddChild(bomb); // Adjust based on your scene structure
             bomb.GlobalPosition = GlobalPosition; // Place the bomb at the player's position
-
+            bomb.SetExplosionRadius(BombExplosionRadius); // Set the modified explosion radius
             CanPlaceBomb = false; // Prevent new bombs from being placed
             // Start cooldown
             GetTree().CreateTimer(BombCooldown).Connect("timeout", new Callable(this, nameof(ResetBombPlacement)));

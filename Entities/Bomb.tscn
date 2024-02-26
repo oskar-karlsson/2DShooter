@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c8e7la7tx28my" path="res://Sprites/Bomb.png" id="1_pbggd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k7qdl"]
-radius = 96.0
+radius = 80.0
 
 [node name="Bomb" type="Area2D"]
 script = ExtResource("1_4auwk")
@@ -13,6 +13,7 @@ script = ExtResource("1_4auwk")
 texture = ExtResource("1_pbggd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, 4)
 shape = SubResource("CircleShape2D_k7qdl")
 
 [node name="Timer" type="Timer" parent="."]

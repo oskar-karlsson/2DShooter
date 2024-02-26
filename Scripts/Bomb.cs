@@ -22,4 +22,15 @@ public partial class Bomb : Area2D
         
 		QueueFree();
     }
+
+    public void SetExplosionRadius(float radius)
+    {
+        var collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
+        if (collisionShape.Shape is CircleShape2D circleShape)
+        {
+            circleShape.Radius = radius;
+        }
+        // Add similar adjustments for other shape types if needed
+    }
+
 }

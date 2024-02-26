@@ -16,11 +16,10 @@ public partial class PuBomb : Area2D
 			// Check if BombCooldown can be reduced
 			if (player.BombCooldown > 4)
 			{
+				player.BombExplosionRadius += 5;
 				player.BombCooldown -= 2;
 				player.ResetBombPlacement();
-
 				RemoveOtherPowerUps();
-
 			}
 		}
 	}
